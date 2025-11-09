@@ -1,0 +1,36 @@
+api_keys:
+  twelve_data: "${TWELVE_DATA_API_KEY}"
+  finnhub: "${FINNHUB_API_KEY}"
+  slack_webhook: "${SLACK_WEBHOOK_URL}"
+
+storage:
+  database_url: "sqlite:///data/stock_scout.db"
+  parquet_path: "data/parquet"
+
+scoring:
+  momentum: 0.35
+  volume: 0.2
+  growth: 0.15
+  catalyst: 0.15
+  flow: 0.1
+  sentiment: 0.05
+
+filters:
+  min_turnover_inr: 30000000
+  max_atr_pct: 0.08
+  max_sector_exposure: 3
+  top_n: 10
+
+schedule:
+  weekend_run: "0 7 * * 6"
+  intraday_watch: "15 9 * * 1-5"
+
+outputs:
+  slack:
+    webhook: "${SLACK_WEBHOOK_URL}"
+  google_sheet:
+    sheet_name: "Weekly Picks"
+    worksheet: "Top Ideas"
+    credentials_json: "${GOOGLE_SERVICE_ACCOUNT_JSON}"
+  csv_archive:
+    path: "data/archive/weekly.csv"

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=67", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stock-scout"
+version = "0.1.0"
+description = "Weekly momentum-growth scanner for Indian equities"
+authors = [{name = "Your Name"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.1",
+    "numpy>=1.25",
+    "sqlalchemy>=2.0",
+    "requests>=2.31",
+    "httpx>=0.25",
+    "pydantic>=2.5",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "tqdm>=4.66",
+    "pandas-ta>=0.3",
+    "vectorbt>=0.25",
+    "slack_sdk>=3.21",
+    "gspread>=5.11",
+    "oauth2client>=4.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
